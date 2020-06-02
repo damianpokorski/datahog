@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "scripts": {},
+  "scripts": {
+    "start": "npx concurrently -n api,provider -c \"bgBlue.bold,bgMagenta.bold\" \"npm run api\" \"npm run provider\"",
+    "api": "node src/app.js",
+    "provider": "npm run start --prefix datahog",
+    "test": "npx mocha test/feature --exit",
+    "coverage": "npx nyc npm run test"
+  },
   "author": "Damian Pokorski",
   "license": "ISC",
   "devDependencies": {
@@ -11,6 +17,7 @@
     "axios-mock-adapter": "^1.18.1",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "concurrently": "^5.2.0",
     "express": "^4.17.1",
     "mocha": "^7.2.0",
     "nyc": "^15.1.0"
