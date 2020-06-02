@@ -1,0 +1,18 @@
+{
+  "name": "wonderbill-tech-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {},
+  "author": "Damian Pokorski",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^0.19.2",
+    "axios-mock-adapter": "^1.18.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "express": "^4.17.1",
+    "mocha": "^7.2.0",
+    "nyc": "^15.1.0"
+  }
+}
