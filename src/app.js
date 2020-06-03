@@ -1,6 +1,10 @@
 // Server
 const express = require('express');
 const app = express();
+const bodyparser = require('body-parser');
+
+app.use(express.json());
+app.use(express.urlencoded());
 
 // Route definition
 const routes = require('./routes.js');
