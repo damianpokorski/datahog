@@ -14,6 +14,7 @@ class ExampleWorker extends BaseWorker {
 
   doWork(props) {
     console.log(['Worker says hello!', props]);
+    return Promise.resolve();
   }
 }
 

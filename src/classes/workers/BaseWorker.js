@@ -24,19 +24,19 @@ class Worker {
     return this.queue;
   }
 
-  addWork(props) {
-    return this.getWorkerQueue().add(props);
+  addWork(data) {
+    return this.getWorkerQueue().add(data);
   }
 
   /**
    * @returns {Promise}
    */
   doWork(props) {
-    throw new 'Do work function is not defined'();
+    throw 'Do work function is not defined';
   }
 
   beginWorking() {
-    this.getWorkerQueue().process(this.concurency, this.doWork);
+    this.getWorkerQueue().process(this.concurency, (data) => this.doWork(data));
   }
 
 }
