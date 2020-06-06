@@ -1,10 +1,11 @@
 // Server
 const express = require('express');
 const app = express();
-const bodyparser = require('body-parser');
+const cors = require('cors');
 
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: true}));
+app.use(cors());
 
 // Route definition
 const routes = require('./routes.js');
