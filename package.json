@@ -4,22 +4,24 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "npx concurrently -n api,provider -c \"bgBlue.bold,bgMagenta.bold\" \"npm run api\" \"npm run provider\"",
     "api": "node src/app.js",
-    "provider": "npm run start --prefix datahog",
+    "worker": "node src/workers.js",
     "test": "npx mocha test/feature --exit",
     "coverage": "npx nyc npm run test"
   },
   "author": "Damian Pokorski",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "axios": "^0.19.2",
+    "bull": "^3.14.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.5.0"
+  },
+  "devDependencies": {
     "axios-mock-adapter": "^1.18.1",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "concurrently": "^5.2.0",
-    "express": "^4.17.1",
-    "express-validator": "^6.5.0",
     "mocha": "^7.2.0",
     "nyc": "^15.1.0"
   }

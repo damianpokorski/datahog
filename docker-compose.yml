@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  datahog:
+    build:
+      context: .
+      dockerfile: dockerfile-datahog
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./datahog:/app
+      - /app/node_modules
+  redis:
+    image: "redis:alpine"
+    ports:
+     - "6379:6379"
+    command: redis-server
+  techtest-api: 
+    build:
+      context: .
+      dockerfile: dockerfile-techtest
+    depends_on: 
+      - "redis"
+    ports:
+      - "3002:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run api
+    links:
+      - "redis"
+      - "datahog"
+    environment: 
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+  techtest-worker:
+    build:
+      context: .
+      dockerfile: dockerfile-techtest
+    depends_on: 
+      - "redis"
+    links:
+      - "redis"
+      - "datahog"
+    environment: 
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run worker
