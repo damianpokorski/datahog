@@ -21,10 +21,9 @@ class RepeatablePriorityDroppingWorker extends BaseWorker {
 
       // Log messages
       console.log(
-        `[${this.name}] Failed, requing with lowered priority(${priority}) and delay(${delay})`
+        `[${this.name}] Failed, requeueing with lowered priority(${priority}) and delay(${delay})`
       );
       console.warn(`[${this.name}] Error: ${JSON.stringify(errors)}`);
-      console.log(JSON.stringify(data));
 
       // Append delay properties to payload, and requeue with values
       this.getWorkerQueue()
@@ -47,7 +46,7 @@ class RepeatablePriorityDroppingWorker extends BaseWorker {
   }
 
   doWork(props) {
-    console.log('Triggering job!');
+    console.log(`[${this.name}] Triggering job! ${JSON.stringify(props.data)}`);
     return this.doFailableWork(props)
       .catch((errors) => this.requeueWithPriorityDropAndDelay(props.data, errors));
   }
