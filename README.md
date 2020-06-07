@@ -6,6 +6,11 @@ Note: the original repository has been implemented through the git submodule
 git clone https://github.com/damianpokorski/datahog.git
 ```
 
+# Composer environment set up
+Building the docker containers and running demo
+```bash
+docker-compose up --build
+```
 
 # Tasks
 Within the package.json the following tasks have been defined
@@ -15,16 +20,10 @@ npm run api
 ```
 Starts the API server.
 
-```
-npm run provider
-```
-Starts the provider server which has been supplied through the git submodule.
-
 ```bash
-npm run start
+npm run worker
 ```
-Starts both the API express server side by side, for ease of development.
-
+Starts the worker process.
 
 ```bash
 npm run test

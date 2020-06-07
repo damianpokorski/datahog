@@ -8,7 +8,6 @@ class Worker {
   }
 
   initialiseQueue() {
-
     this.queue = new Queue(this.name, {
       redis: {
         host: process.env.REDIS_HOST || 'redis',

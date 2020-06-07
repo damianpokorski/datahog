@@ -11,15 +11,13 @@ class DataAcquisitionWorker extends RepeatablePriorityDroppingWorker {
   }
 
   doFailableWork(props) {
-    return this.resolver.get(props.data.url)
-      .then(result => (new CallbackWorker())
-        .addWork({
-          callbackUrl: props.data.callbackUrl,
-          payload: result.data
-        })
-      );
+    return this.resolver.get(props.data.url).then((result) =>
+      new CallbackWorker().addWork({
+        callbackUrl: props.data.callbackUrl,
+        payload: result.data,
+      })
+    );
   }
 }
-
 
 module.exports = DataAcquisitionWorker;

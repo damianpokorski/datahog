@@ -1,7 +1,9 @@
 // Dependencies
 const chai = require('chai');
 const app = require('../../src/app.js');
+const sinon = require('sinon');
 const { expect } = require('chai');
+const BaseWorker = require('./../../src/classes/workers/BaseWorker');
 
 // Setup
 chai.use(require('chai-http'));
@@ -13,6 +15,16 @@ const defaultPayload = {
 
 // Test definitions
 describe("Endpoints", () => {
+  /** @type {sinon.SinonStub} */
+  let addWorkStub = null;
+  beforeEach(function() {
+    addWorkStub = sinon.stub(BaseWorker.prototype, "addWork").returns(Promise.resolve());
+  });
+
+  afterEach(function() {
+    addWorkStub.restore();
+  });
+
   describe("GET /api", () => {
     it("should return a 404 when accessed with invalid method", (done) => {
       chai.request(app)
@@ -31,6 +43,7 @@ describe("Endpoints", () => {
         .send(defaultPayload)
         .end((error, response) => {
           expect(response.status).to.eq(200);
+          expect(addWorkStub.calledOnce).eq(true);
           done();
         })
     });
@@ -54,7 +67,7 @@ describe("Endpoints", () => {
         .end((error, response) => {
           expect(response.status).to.eq(422);
           expect(response.body).to.have.key('errors');
-          expect(response.body.errors.shift()).property('msg', 'Property must be gas or internet');
+          expect(response.body.errors.shift()).property('msg', 'Property must be one of: gas, internet');
           done();
         })
     });
