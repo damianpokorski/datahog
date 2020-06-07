@@ -5,15 +5,11 @@ services:
     build:
       context: .
       dockerfile: dockerfile-datahog
-    ports:
-      - "3001:3000"
     volumes:
       - ./datahog:/app
       - /app/node_modules
   redis:
     image: "redis:alpine"
-    ports:
-     - "6379:6379"
     command: redis-server
   techtest-api: 
     build:
@@ -22,7 +18,7 @@ services:
     depends_on: 
       - "redis"
     ports:
-      - "3002:3000"
+      - "3000:3000"
     volumes:
       - .:/app
       - /app/node_modules
@@ -33,6 +29,8 @@ services:
     environment: 
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+      - PROVIDER_GAS_URL=http://datahog:3000/providers/gas
+      - PROVIDER_INTERNET_URL=http://datahog:3000/providers/internet
   techtest-worker:
     build:
       context: .
