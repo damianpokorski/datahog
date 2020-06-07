@@ -7,7 +7,7 @@
     "api": "node src/app.js",
     "worker": "node src/workers.js",
     "test": "npx mocha test/feature --exit",
-    "coverage": "npx nyc npm run test"
+    "coverage": "npx nyc --include=src/** --all npm run test"
   },
   "author": "Damian Pokorski",
   "license": "ISC",
