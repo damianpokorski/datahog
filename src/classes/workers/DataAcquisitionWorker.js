@@ -7,11 +7,14 @@ class DataAcquisitionWorker extends RepeatablePriorityDroppingWorker {
   constructor() {
     super();
     this.name = 'DataAcquisitonWorker';
-    this.resolver = axios.create();
+  }
+
+  resolver() {
+    return axios.create();
   }
 
   doFailableWork(props) {
-    return this.resolver.get(props.data.url).then((result) =>
+    return this.resolver().get(props.data.url).then((result) =>
       new CallbackWorker().addWork({
         callbackUrl: props.data.callbackUrl,
         payload: result.data,

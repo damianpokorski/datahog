@@ -35,9 +35,8 @@ class Worker {
   }
 
   beginWorking() {
-    this.getWorkerQueue().process(this.concurency, (data) => this.doWork(data));
+    return this.getWorkerQueue().process(this.concurency, (data) => this.doWork(data));
   }
-
 }
 
 module.exports = Worker;

@@ -1,9 +1,9 @@
 // Dependencies
 const chai = require('chai');
-const app = require('../../src/app.js');
+const app = require('../src/app.js');
 const sinon = require('sinon');
 const { expect } = require('chai');
-const BaseWorker = require('./../../src/classes/workers/BaseWorker');
+const BaseWorker = require('../src/classes/workers/BaseWorker');
 
 // Setup
 chai.use(require('chai-http'));

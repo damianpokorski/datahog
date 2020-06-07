@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Datahog",
+    "folders": [],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:3000",
+        "path": "/api",
+        "method": "POST",
+        "auth": "None",
+        "httpUser": "",
+        "httpPassword": "",
+        "passwordFieldType": "password",
+        "bearerToken": "",
+        "headers": [],
+        "params": [],
+        "bodyParams": [
+          {
+            "key": "provider",
+            "value": "internet"
+          },
+          {
+            "key": "callbackUrl",
+            "value": "https://enytauk0o9hvq.x.pipedream.net/"
+          }
+        ],
+        "rawParams": "{}",
+        "rawInput": false,
+        "contentType": "application/json",
+        "requestType": "",
+        "preRequestScript": null,
+        "testScript": null,
+        "label": "",
+        "name": "Datahog sample request",
+        "collection": 1
+      }
+    ]
+  }
+]

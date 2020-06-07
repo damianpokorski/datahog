@@ -6,7 +6,7 @@
   "scripts": {
     "api": "node src/app.js",
     "worker": "node src/workers.js",
-    "test": "npx mocha test/feature --exit",
+    "test": "npx mocha test --exit",
     "coverage": "npx nyc --include=src/** --all npm run test"
   },
   "author": "Damian Pokorski",
