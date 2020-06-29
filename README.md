@@ -1,3 +1,15 @@
+# Requirements
+Requirements
+
+As our data providers can go offline for extended period of time, the naive implementations of this task using retry mechanisms are not going to be accepted!
+
+- Build an API endpoint using Node.js (the likes of Express and Hapi are perfect for this job). You can use TypeScript if you wish;
+- The API should accept a POST with two fields provider (gas or internet) and the callbackUrl. The payload should be validated accordingly;
+- Once payload is accepted, collect the data from the mock endpoint described previously and call the callbackUrl with the collected data;
+- Use Git whilst working on this task - this will help us understanding how you work;
+- Use docker-compose to bootstrap other services you may need to complete the task;
+- We expect decent test coverage for the code produced.
+
 # About
 This project was quite an interesting exercise, probably because it did focus on a lot of intergation issues etc rather than the programming practices and algorithms (which most of other tech tests seem to be doing).
 
